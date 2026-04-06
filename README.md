@@ -1,6 +1,6 @@
 # Yusuf Öz — Portfolio
 
-Interactive portfolio terminal for Yusuf Öz. Software Engineer focusing on Mobile, Web, and Autonomous Data Systems.
+Interactive portfolio terminal for Yusuf Öz. Software Engineer focusing on Mobile, Web, and Autonomous Systems.
 
 ## Tech Stack
 - **Framework:** Next.js 14 / React 18
