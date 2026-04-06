@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Easing } from "framer-motion";
+import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
 interface RevealOnScrollProps {
@@ -9,16 +9,18 @@ interface RevealOnScrollProps {
   className?: string;
 }
 
-const easeOut: Easing = "easeOut";
-
 export default function RevealOnScroll({ children, delay = 0, className = "" }: RevealOnScrollProps) {
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.7, ease: easeOut, delay }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+        delay,
+      }}
     >
       {children}
     </motion.div>

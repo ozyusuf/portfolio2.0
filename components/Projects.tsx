@@ -11,7 +11,7 @@ export default function Projects() {
   const grid = projects.filter((p) => !p.featured);
 
   return (
-    <section id="work" className="section-padding">
+    <section id="work" className="section-padding" style={{ background: "rgba(5, 5, 5, 0.6)" }}>
       <div className="max-w-[1200px] mx-auto px-6">
         <RevealOnScroll>
           <SectionLabel>Selected Work</SectionLabel>

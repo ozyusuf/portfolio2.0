@@ -8,17 +8,17 @@ import RevealOnScroll from "./ui/RevealOnScroll";
 
 const DIRECTION_TAGS = [
   "Autonomous Driving",
-  "Reinforcement Learning",
-  "Multi-Agent Systems",
-  "Perception",
-  "Embedded Systems",
+  "Sensor Fusion",
+  "Deep Learning for Perception",
+  "Motion Planning & Control",
+  "Functional Safety",
 ];
 
 export default function Direction() {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <section id="direction" className="section-padding">
+    <section id="direction" className="section-padding" style={{ background: "rgba(5, 5, 5, 0.6)" }}>
       <div className="max-w-[1200px] mx-auto px-6">
         <RevealOnScroll>
           <SectionLabel>Current Direction</SectionLabel>
@@ -29,7 +29,7 @@ export default function Direction() {
           <div
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            className="relative rounded-xl p-12 overflow-hidden transition-all duration-300"
+            className="relative rounded-xl p-6 md:p-12 overflow-hidden transition-all duration-300"
             style={{
               background: "var(--bg-card)",
               border: hovered ? "1px solid var(--border-accent)" : "1px solid var(--border)",
@@ -49,24 +49,19 @@ export default function Direction() {
                 className="font-sans font-semibold text-[26px] leading-tight"
                 style={{ color: "var(--text-primary)", letterSpacing: "-0.02em" }}
               >
-                Autonomous Systems &amp; Intelligent Software
+                Autonomous Driving Technologies
               </h3>
 
               <p className="text-[16px] leading-[1.8]" style={{ color: "var(--text-secondary)" }}>
-                Building toward the intersection of{" "}
+                I continue to build and ship{" "}
                 <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>
-                  embedded systems
+                  mobile and web applications
                 </strong>
-                ,{" "}
+                , but my next chapter is{" "}
                 <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>
-                  perception
+                  autonomous driving
                 </strong>
-                , and{" "}
-                <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>
-                  autonomous decision-making
-                </strong>
-                . Currently specializing through the National Technology Academy&apos;s
-                advanced program, supported by Turkey&apos;s Ministry of Industry and Technology.
+                — from sensor fusion and environmental perception to motion planning and vehicle control. That&apos;s where I&apos;m specializing.
               </p>
 
               <div className="flex flex-wrap gap-2">

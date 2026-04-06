@@ -18,11 +18,11 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mahmut Yusuf Öz — Software Engineer",
+  title: "Yusuf Öz — Software Engineer",
   description:
-    "Portfolio of Mahmut Yusuf Öz. Building mobile, web, and intelligent systems. Flutter developer, React, AI/ML, autonomous systems.",
+    "Portfolio of Yusuf Öz. Building mobile, web, and intelligent systems. Flutter developer, React, AI/ML, autonomous systems.",
   openGraph: {
-    title: "Mahmut Yusuf Öz — Systems & Software",
+    title: "Yusuf Öz — Systems & Software",
     description: "I ship real products to real users. Mobile, web, and intelligent systems.",
     type: "website",
     locale: "en_US",

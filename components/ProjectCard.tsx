@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import TechTag from "./ui/TechTag";
 
 interface Project {
@@ -18,31 +18,52 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const [hovered, setHovered] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    cardRef.current.style.setProperty("--mouse-x", `${x}px`);
+    cardRef.current.style.setProperty("--mouse-y", `${y}px`);
+  };
 
   return (
     <div
+      ref={cardRef}
+      onPointerMove={handlePointerMove}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative flex flex-col rounded-xl transition-all duration-300 overflow-hidden"
+      className="relative flex flex-col h-full rounded-xl transition-all duration-500 overflow-hidden group"
       style={{
         background: "var(--bg-card)",
-        border: hovered ? "1px solid var(--border-accent)" : "1px solid var(--border)",
-        padding: "36px",
+        border: "1px solid var(--border)",
+        boxShadow: hovered ? "0 20px 40px -20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.05)" : "inset 0 1px 1px rgba(255,255,255,0.02)",
+        padding: "clamp(20px, 5vw, 36px)",
         transform: hovered ? "translateY(-4px)" : "translateY(0)",
-        boxShadow: hovered ? "0 8px 40px rgba(74,222,128,0.08)" : "none",
       }}
     >
-      {/* Accent top line on hover */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px transition-opacity duration-300"
+      {/* Spotlight Effect overlay */}
+      <div 
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{
-          background: "linear-gradient(90deg, transparent, var(--accent), transparent)",
-          opacity: hovered ? 1 : 0,
+          background: "radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255,255,255,0.03), transparent 40%)",
+          zIndex: 0
+        }}
+      />
+      {/* Soft Top Glow overlay on Hover */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px transition-opacity duration-500"
+        style={{
+          background: "linear-gradient(90deg, transparent, var(--accent-muted), transparent)",
+          opacity: hovered ? 0.5 : 0,
         }}
       />
 
       {/* Header */}
-      <div className="flex items-start justify-between mb-4 gap-4">
+      <div className="relative z-10 flex items-start justify-between mb-4 gap-4">
         <h3
           className="font-sans font-semibold text-[22px] leading-tight"
           style={{ color: "var(--text-primary)", letterSpacing: "-0.01em" }}
@@ -92,14 +113,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
       {/* Description */}
       <p
-        className="text-[14px] leading-[1.7] mb-6 flex-1"
+        className="relative z-10 text-[14px] leading-[1.7] mb-6 flex-1 text-balance"
         style={{ color: "var(--text-secondary)" }}
       >
         {project.description}
       </p>
 
       {/* Tech tags */}
-      <div className="flex flex-wrap gap-2">
+      <div className="relative z-10 flex flex-wrap gap-2">
         {project.tech.map((t) => (
           <TechTag key={t}>{t}</TechTag>
         ))}
