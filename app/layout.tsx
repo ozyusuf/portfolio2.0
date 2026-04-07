@@ -26,6 +26,8 @@ export const metadata: Metadata = {
     description: "I ship real products to real users. Mobile, web, and intelligent systems.",
     type: "website",
     locale: "en_US",
+    url: "https://yusuf-oz.vercel.app",
+    siteName: "Yusuf Öz Portfolio",
   },
 };
 
